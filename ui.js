@@ -63,7 +63,15 @@ const UI = {
         
         <div class="rate-display" id="rate-display">
           <span class="rate-text">Loading rates...</span>
+          <button class="favorite-btn" id="favorite-btn" title="Add to favorites">
+            ★
+          </button>
         </div>
+      </div>
+      
+      <!-- Favorites Panel -->
+      <div class="favorites-panel" id="favorites-panel">
+        <!-- Rendered by updateFavorites() -->
       </div>
       
       <div class="dashboard-grid">
@@ -102,19 +110,23 @@ const UI = {
     const fromSelect = document.getElementById('from-currency');
     const toSelect = document.getElementById('to-currency');
     const swapBtn = document.getElementById('swap-btn');
+    const favBtn = document.getElementById('favorite-btn');
     
     amountInput?.addEventListener('input', () => this.updateConversion());
     fromSelect?.addEventListener('change', () => {
       this.updateConversion();
       this.updateGraph();
       this.updateWidgets();
+      this.updateFavoriteButton();
     });
     toSelect?.addEventListener('change', () => {
       this.updateConversion();
       this.updateGraph();
       this.updateWidgets();
+      this.updateFavoriteButton();
     });
     swapBtn?.addEventListener('click', () => this.swapCurrencies());
+    favBtn?.addEventListener('click', () => this.toggleFavorite());
     
     // Timeframe buttons
     document.querySelectorAll('.timeframe-btn').forEach(btn => {
@@ -126,6 +138,9 @@ const UI = {
         this.updateWidgets();
       });
     });
+    
+    this.updateFavoriteButton();
+    this.updateFavorites();
   },
   
   async updateConversion() {
@@ -248,6 +263,92 @@ const UI = {
         </div>
       </div>
     `;
+  },
+  
+  toggleFavorite() {
+    const isFavorite = Favorites.has(this.currentBase, this.currentTarget);
+    if (isFavorite) {
+      Favorites.remove(this.currentBase, this.currentTarget);
+    } else {
+      Favorites.add(this.currentBase, this.currentTarget);
+    }
+    this.updateFavoriteButton();
+    this.updateFavorites();
+  },
+  
+  updateFavoriteButton() {
+    const btn = document.getElementById('favorite-btn');
+    if (!btn) return;
+    
+    const isFavorite = Favorites.has(this.currentBase, this.currentTarget);
+    btn.classList.toggle('active', isFavorite);
+    btn.textContent = isFavorite ? '★' : '☆';
+  },
+  
+  async updateFavorites() {
+    const container = document.getElementById('favorites-panel');
+    if (!container) return;
+    
+    const favorites = Favorites.getAll();
+    if (favorites.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+    
+    container.style.display = 'block';
+    
+    // Fetch rates for favorites
+    const data = await Exchange.getLatestRates('USD');
+    if (!data || !data.rates) return;
+    
+    const items = favorites.map(pair => {
+      const rate = data.rates[pair.to] / data.rates[pair.from];
+      return `
+        <div class="favorite-item" data-from="${pair.from}" data-to="${pair.to}">
+          <div class="favorite-pair">
+            <span class="favorite-from">${pair.from}</span>
+            <span class="favorite-arrow">→</span>
+            <span class="favorite-to">${pair.to}</span>
+          </div>
+          <div class="favorite-rate">${rate.toFixed(4)}</div>
+          <button class="favorite-remove" data-from="${pair.from}" data-to="${pair.to}">✕</button>
+        </div>
+      `;
+    }).join('');
+    
+    container.innerHTML = `
+      <div class="panel-header">
+        <h2 class="panel-title">FAVORITES</h2>
+      </div>
+      <div class="favorites-list">
+        ${items}
+      </div>
+    `;
+    
+    // Attach remove listeners
+    container.querySelectorAll('.favorite-remove').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const from = btn.dataset.from;
+        const to = btn.dataset.to;
+        Favorites.remove(from, to);
+        this.updateFavorites();
+      });
+    });
+    
+    // Attach click listeners to load pair
+    container.querySelectorAll('.favorite-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const from = item.dataset.from;
+        const to = item.dataset.to;
+        document.getElementById('from-currency').value = from;
+        document.getElementById('to-currency').value = to;
+        this.updateConversion();
+        this.updateGraph();
+        this.updateWidgets();
+        this.updateFavoriteButton();
+      });
+    });
   },
   
   swapCurrencies() {
