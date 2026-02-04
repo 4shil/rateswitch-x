@@ -10,6 +10,7 @@ const App = {
     console.log('App v' + this.version + ' started');
     this.updateStatus();
     this.registerServiceWorker();
+    this.setupKeyboardShortcuts();
     
     // Initialize UI
     UI.init();
@@ -25,6 +26,46 @@ const App = {
     window.addEventListener('offline', () => {
       this.online = false;
       this.updateStatus();
+    });
+  },
+  
+  setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+      // Ignore if typing in input
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+      
+      // S - Swap currencies
+      if (e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        UI.swapCurrencies();
+      }
+      
+      // F - Toggle favorites
+      if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        UI.toggleFavorite();
+      }
+      
+      // M - Toggle multi-currency
+      if (e.key === 'm' || e.key === 'M') {
+        e.preventDefault();
+        UI.toggleMultiMode();
+      }
+      
+      // 1-4 - Timeframe shortcuts
+      if (e.key >= '1' && e.key <= '4') {
+        e.preventDefault();
+        const days = [7, 30, 90, 365][parseInt(e.key) - 1];
+        document.querySelectorAll('.timeframe-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (parseInt(btn.dataset.days) === days) {
+            btn.classList.add('active');
+            UI.currentTimeframe = days;
+            UI.updateGraph();
+            UI.updateWidgets();
+          }
+        });
+      }
     });
   },
   
