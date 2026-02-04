@@ -9,30 +9,43 @@ const Exchange = {
     'TRY', 'RUB', 'HKD', 'SGD', 'NZD', 'KRW', 'THB', 'MYR'
   ],
   
-  // Fetch latest rates
+  // Fetch latest rates (with cache)
   async getLatestRates(base = 'USD') {
+    // Try cache first
+    const cached = Cache.getRates();
+    if (cached && cached.base === base) {
+      return cached;
+    }
+    
     try {
       const response = await fetch(`${this.API_BASE}/latest?from=${base}`);
       if (!response.ok) throw new Error('API request failed');
       const data = await response.json();
       
       // Save to cache
-      Storage.saveRates({
+      const rateData = {
         base: data.base,
         rates: data.rates,
         date: data.date
-      });
+      };
+      Cache.setRates(rateData);
       
-      return data;
+      return rateData;
     } catch (error) {
       console.error('Failed to fetch rates:', error);
-      // Fallback to cached data
-      return Storage.loadRates();
+      // Fallback to any cached data
+      return Cache.getRates() || Storage.loadRates();
     }
   },
   
-  // Fetch historical rates
+  // Fetch historical rates (with cache)
   async getHistoricalRates(base, days = 7) {
+    // Try cache first
+    const cached = Cache.getHistorical(base, days);
+    if (cached) {
+      return cached;
+    }
+    
     try {
       const endDate = new Date();
       const startDate = new Date();
@@ -46,7 +59,12 @@ const Exchange = {
       );
       
       if (!response.ok) throw new Error('Historical data fetch failed');
-      return await response.json();
+      const data = await response.json();
+      
+      // Cache the result
+      Cache.setHistorical(base, days, data);
+      
+      return data;
     } catch (error) {
       console.error('Failed to fetch historical rates:', error);
       return null;
