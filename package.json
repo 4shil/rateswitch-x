@@ -1,0 +1,16 @@
+{
+  "name": "rateswitch-x",
+  "version": "1.0.0",
+  "description": "Privacy-first currency exchange dashboard",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'No build required - pure static files'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4shil/rateswitch-x"
+  },
+  "keywords": ["currency", "exchange", "forex", "privacy", "offline", "pwa"],
+  "author": "4shil",
+  "license": "MIT"
+}
