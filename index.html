@@ -2,18 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy-first currency exchange dashboard - no tracking, no ads">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <meta name="description" content="Privacy-first currency exchange dashboard - no tracking, no ads, works offline">
+  <meta name="keywords" content="currency, exchange, converter, forex, rates, privacy, offline">
+  <meta name="author" content="RateSwitch X">
   <meta name="theme-color" content="#000000">
-  <title>RateSwitch X - Currency Intelligence</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="RateSwitch X - Currency Intelligence Platform">
+  <meta property="og:description" content="Fast, private currency exchange dashboard with zero surveillance">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RateSwitch X">
+  <meta name="twitter:description" content="Privacy-first currency dashboard">
+  
+  <title>RateSwitch X - Currency Intelligence Platform</title>
+  
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+  
+  <!-- Preconnect to API -->
+  <link rel="preconnect" href="https://api.frankfurter.app">
 </head>
 <body>
   <div id="app">
     <header class="header">
       <h1 class="logo">RATESWITCH X</h1>
-      <div class="status" id="status">ONLINE</div>
+      <div class="header-right">
+        <div class="shortcuts-hint" title="Keyboard shortcuts">⌨️</div>
+        <div class="status" id="status">ONLINE</div>
+      </div>
     </header>
     
     <main class="container">
@@ -21,6 +41,17 @@
         <!-- App loads here -->
       </div>
     </main>
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <strong>RATESWITCH X</strong> — Privacy-first currency intelligence
+        </div>
+        <div class="footer-section">
+          No tracking • No ads • Open source
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script src="storage.js"></script>

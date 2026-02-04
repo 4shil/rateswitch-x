@@ -40,7 +40,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Header */
 .header {
   background: var(--white);
   border-bottom: var(--border-thick) solid var(--black);
@@ -51,6 +50,23 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shortcuts-hint {
+  font-size: 1.25rem;
+  cursor: help;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.shortcuts-hint:hover {
+  opacity: 1;
 }
 
 .logo {
@@ -68,6 +84,33 @@ body {
   background: var(--green);
   border: var(--border-thin) solid var(--black);
   box-shadow: 2px 2px 0 var(--black);
+}
+
+/* Footer */
+.footer {
+  background: var(--black);
+  color: var(--white);
+  border-top: var(--border-thick) solid var(--black);
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 }
 
 /* Container */
