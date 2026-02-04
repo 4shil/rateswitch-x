@@ -67,3 +67,7 @@ Deploy to any static host:
 
 MIT
 # Performance validated - 46KB total
+
+## Live Demo
+
+https://rateswitch-x.vercel.app
