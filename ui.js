@@ -3,6 +3,7 @@ const UI = {
   currentBase: 'USD',
   currentTarget: 'EUR',
   currentAmount: 1,
+  currentTimeframe: 7,
   
   init() {
     this.render();
@@ -65,8 +66,24 @@ const UI = {
       </div>
       
       <div class="dashboard-grid">
-        <div id="graphs-container"></div>
-        <div id="widgets-container"></div>
+        <div class="graph-panel">
+          <div class="panel-header">
+            <h2 class="panel-title">EXCHANGE RATE HISTORY</h2>
+            <div class="timeframe-selector">
+              <button class="timeframe-btn active" data-days="7">7D</button>
+              <button class="timeframe-btn" data-days="30">30D</button>
+              <button class="timeframe-btn" data-days="90">90D</button>
+              <button class="timeframe-btn" data-days="365">1Y</button>
+            </div>
+          </div>
+          <div class="graph-container" id="graph-container">
+            <div class="graph-loading">Loading chart data...</div>
+          </div>
+        </div>
+        
+        <div id="widgets-container">
+          <!-- Widgets will be added here -->
+        </div>
       </div>
     `;
   },
@@ -86,9 +103,25 @@ const UI = {
     const swapBtn = document.getElementById('swap-btn');
     
     amountInput?.addEventListener('input', () => this.updateConversion());
-    fromSelect?.addEventListener('change', () => this.updateConversion());
-    toSelect?.addEventListener('change', () => this.updateConversion());
+    fromSelect?.addEventListener('change', () => {
+      this.updateConversion();
+      this.updateGraph();
+    });
+    toSelect?.addEventListener('change', () => {
+      this.updateConversion();
+      this.updateGraph();
+    });
     swapBtn?.addEventListener('click', () => this.swapCurrencies());
+    
+    // Timeframe buttons
+    document.querySelectorAll('.timeframe-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.timeframe-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        this.currentTimeframe = parseInt(e.target.dataset.days);
+        this.updateGraph();
+      });
+    });
   },
   
   async updateConversion() {
@@ -129,6 +162,32 @@ const UI = {
     }
   },
   
+  async updateGraph() {
+    const container = document.getElementById('graph-container');
+    if (!container) return;
+    
+    container.innerHTML = '<div class="graph-loading">Loading chart data...</div>';
+    
+    const data = await Exchange.getHistoricalRates(this.currentBase, this.currentTimeframe);
+    if (!data || !data.rates) {
+      container.innerHTML = '<div class="graph-error">Failed to load historical data</div>';
+      return;
+    }
+    
+    // Transform data for chart
+    const chartData = Object.entries(data.rates).map(([date, rates]) => ({
+      date: date,
+      value: rates[this.currentTarget] || 0
+    }));
+    
+    // Sort by date
+    chartData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    // Render chart
+    const chartSVG = Charts.createLineChart(chartData);
+    container.innerHTML = chartSVG;
+  },
+  
   swapCurrencies() {
     const fromSelect = document.getElementById('from-currency');
     const toSelect = document.getElementById('to-currency');
@@ -138,6 +197,7 @@ const UI = {
       fromSelect.value = toSelect.value;
       toSelect.value = temp;
       this.updateConversion();
+      this.updateGraph();
     }
   },
   
