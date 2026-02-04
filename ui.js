@@ -74,6 +74,34 @@ const UI = {
         <!-- Rendered by updateFavorites() -->
       </div>
       
+      <!-- Multi-Currency Panel -->
+      <div class="multi-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">MULTI-CURRENCY CONVERTER</h2>
+          <button class="multi-toggle-btn" id="multi-toggle">
+            <span id="multi-toggle-text">SHOW</span>
+          </button>
+        </div>
+        <div class="multi-container hidden" id="multi-container">
+          <div class="multi-controls">
+            <input 
+              type="number" 
+              id="multi-amount" 
+              class="input-field" 
+              value="1000" 
+              step="1"
+              min="0"
+            >
+            <select id="multi-base" class="select-field">
+              ${this.renderCurrencyOptions('USD')}
+            </select>
+          </div>
+          <div class="multi-results" id="multi-results">
+            <!-- Results render here -->
+          </div>
+        </div>
+      </div>
+      
       <div class="dashboard-grid">
         <div class="graph-panel">
           <div class="panel-header">
@@ -127,6 +155,16 @@ const UI = {
     });
     swapBtn?.addEventListener('click', () => this.swapCurrencies());
     favBtn?.addEventListener('click', () => this.toggleFavorite());
+    
+    // Multi-currency toggle
+    const multiToggle = document.getElementById('multi-toggle');
+    multiToggle?.addEventListener('click', () => this.toggleMultiMode());
+    
+    // Multi-currency inputs
+    const multiAmount = document.getElementById('multi-amount');
+    const multiBase = document.getElementById('multi-base');
+    multiAmount?.addEventListener('input', () => this.updateMultiCurrency());
+    multiBase?.addEventListener('change', () => this.updateMultiCurrency());
     
     // Timeframe buttons
     document.querySelectorAll('.timeframe-btn').forEach(btn => {
@@ -274,6 +312,58 @@ const UI = {
     }
     this.updateFavoriteButton();
     this.updateFavorites();
+  },
+  
+  toggleMultiMode() {
+    const container = document.getElementById('multi-container');
+    const toggleText = document.getElementById('multi-toggle-text');
+    
+    if (container && toggleText) {
+      const isHidden = container.classList.contains('hidden');
+      container.classList.toggle('hidden');
+      toggleText.textContent = isHidden ? 'HIDE' : 'SHOW';
+      
+      if (isHidden) {
+        this.updateMultiCurrency();
+      }
+    }
+  },
+  
+  async updateMultiCurrency() {
+    const amount = parseFloat(document.getElementById('multi-amount').value) || 0;
+    const base = document.getElementById('multi-base').value;
+    const resultsContainer = document.getElementById('multi-results');
+    
+    if (!resultsContainer) return;
+    
+    // Fetch rates
+    const data = await Exchange.getLatestRates(base);
+    if (!data || !data.rates) {
+      resultsContainer.innerHTML = '<div class="multi-error">Failed to load rates</div>';
+      return;
+    }
+    
+    // Convert to common currencies
+    const targets = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'INR'];
+    const results = targets
+      .filter(curr => curr !== base)
+      .map(curr => {
+        const rate = data.rates[curr] || 1;
+        const result = amount * rate;
+        return {
+          currency: curr,
+          rate: rate,
+          result: result
+        };
+      });
+    
+    resultsContainer.innerHTML = results.map(item => `
+      <div class="multi-result-row">
+        <div class="multi-currency">${item.currency}</div>
+        <div class="multi-value">${item.result.toFixed(2)}</div>
+        <div class="multi-rate">@ ${item.rate.toFixed(4)}</div>
+      </div>
+    `).join('');
   },
   
   updateFavoriteButton() {

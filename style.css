@@ -284,6 +284,84 @@ body {
   background: var(--black);
 }
 
+/* Multi-Currency Panel */
+.multi-panel {
+  background: var(--white);
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2rem;
+}
+
+.multi-toggle-btn {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  background: var(--blue);
+  color: var(--white);
+  border: var(--border-thin) solid var(--black);
+  box-shadow: 2px 2px 0 var(--black);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.multi-toggle-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--black);
+}
+
+.multi-container {
+  padding: 2rem;
+}
+
+.multi-controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.multi-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.multi-result-row {
+  padding: 1rem;
+  background: var(--gray-100);
+  border: var(--border-thin) solid var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.multi-currency {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.multi-value {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.multi-rate {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gray-800);
+}
+
+.multi-error {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--red);
+}
+
 /* Dashboard Grid */
 .dashboard-grid {
   display: grid;
