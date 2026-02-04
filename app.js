@@ -11,10 +11,15 @@ const App = {
     this.updateStatus();
     this.registerServiceWorker();
     
+    // Initialize UI
+    UI.init();
+    UI.updateConversion();
+    
     // Network status listeners
     window.addEventListener('online', () => {
       this.online = true;
       this.updateStatus();
+      UI.updateConversion();
     });
     
     window.addEventListener('offline', () => {
