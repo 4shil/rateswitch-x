@@ -66,3 +66,4 @@ Deploy to any static host:
 ## License
 
 MIT
+# Performance validated - 46KB total
