@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -27,6 +28,20 @@
   <link rel="preconnect" href="https://api.frankfurter.app">
 </head>
 <body>
+<!-- Compact Header (Redesign Step 1) -->
+<header class="compact-header">
+  <div class="ch-left">
+    <label for="amount" class="visually-hidden">Amount</label>
+    <input id="amount" class="ch-amount" type="number" inputmode="decimal" value="1" min="0" step="any" aria-label="Amount" />
+    <select id="from-currency" class="ch-select" aria-label="From currency"></select>
+    <button id="swap-btn" class="ch-swap" aria-label="Swap currencies">⇄</button>
+    <select id="to-currency" class="ch-select" aria-label="To currency"></select>
+  </div>
+  <div class="ch-right">
+    <button id="convert-btn" class="ch-convert">Convert</button>
+  </div>
+</header>
+<!-- End Compact Header -->
   <div id="app">
     <header class="header">
       <h1 class="logo">RATESWITCH X</h1>
