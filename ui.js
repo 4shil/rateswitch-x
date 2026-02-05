@@ -459,3 +459,12 @@ const UI = {
     console.error(message);
   }
 };
+// Step2: favorites UI - add horizontal scroll container (placeholder)
+(function(){
+  const favBar = document.createElement('div');
+  favBar.id = 'favorites-bar-redesign';
+  favBar.setAttribute('aria-hidden','true');
+  favBar.style.display='none';
+  document.body.appendChild(favBar);
+})();
+// end step2
