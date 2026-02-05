@@ -622,3 +622,7 @@ body {
 /* Step2 favorites styles */
 .favorites-bar{display:flex;gap:8px;padding:8px 12px;overflow:auto;white-space:nowrap}
 .fav-pill{padding:6px 10px;border-radius:999px;border:1px solid #111;background:#fff}
+/* Step3 chart controls */
+.chart-timeframes{display:flex;gap:6px;margin:8px 0}
+.tf-btn{padding:6px 8px;border-radius:6px;border:1px solid #111;background:#fff}
+.chart-readout{font-size:13px;color:#222;margin-top:6px}
