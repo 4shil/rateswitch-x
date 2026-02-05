@@ -216,3 +216,8 @@ const Charts = {
     `;
   }
 };
+// Step3: chart area tweaks (placeholder for timeframe buttons & improved interactions)
+// Added lightweight hook for keyboard readout
+window.__rateswitch_chart_hooks = window.__rateswitch_chart_hooks || {};
+window.__rateswitch_chart_hooks.timeframeControl = true;
+// end step3
