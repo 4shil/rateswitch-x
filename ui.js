@@ -468,3 +468,33 @@ const UI = {
   document.body.appendChild(favBar);
 })();
 // end step2
+
+// Step2: favorites bar implementation
+(function(){
+  function initFavorites(){
+    const favBar=document.createElement('div');
+    favBar.id='favorites-bar';
+    favBar.className='favorites-bar';
+    favBar.setAttribute('role','toolbar');
+    favBar.setAttribute('aria-label','Favorite rates');
+    const header = document.querySelector('.compact-header');
+    if(header && header.parentNode){ header.parentNode.insertBefore(favBar, header.nextSibling); } else { document.body.insertBefore(favBar, document.body.firstChild); }
+
+    const stored = localStorage.getItem('rsx_favs');
+    const favs = stored ? JSON.parse(stored) : ['USD/EUR','USD/GBP','EUR/GBP'];
+    favs.forEach(f=>{
+      const btn=document.createElement('button');
+      btn.className='fav-pill';
+      btn.textContent=f;
+      btn.onclick=()=>{ applyFavorite(f); };
+      favBar.appendChild(btn);
+    });
+  }
+  function applyFavorite(pair){
+    const [from,to]=pair.split('/');
+    const fromSel=document.getElementById('from-currency');
+    const toSel=document.getElementById('to-currency');
+    if(fromSel && toSel){ try{ fromSel.value=from; toSel.value=to; document.getElementById('convert-btn').click(); }catch(e){} }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initFavorites); else initFavorites();
+})();
