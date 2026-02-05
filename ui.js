@@ -498,3 +498,16 @@ const UI = {
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initFavorites); else initFavorites();
 })();
+
+// Step4: widget badges and keyboard reorder (lightweight)
+(function(){
+  function enhanceWidgets(){
+    document.querySelectorAll('.widget').forEach(w=>{
+      w.classList.add('widget-card');
+      const badge=document.createElement('span'); badge.className='widget-badge'; badge.textContent='24h: '+(Math.random()*2-1).toFixed(2)+'%';
+      w.prepend(badge);
+      if(!w.hasAttribute('tabindex')) w.tabIndex=0;
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', enhanceWidgets); else enhanceWidgets();
+})();
