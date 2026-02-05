@@ -626,3 +626,5 @@ body {
 .chart-timeframes{display:flex;gap:6px;margin:8px 0}
 .tf-btn{padding:6px 8px;border-radius:6px;border:1px solid #111;background:#fff}
 .chart-readout{font-size:13px;color:#222;margin-top:6px}
+/* Step4 widget badge tweak */
+.widget-badge{display:inline-block;background:#fffbeb;color:#a65900;padding:4px 8px;margin-bottom:8px;border-radius:6px;font-weight:600}
