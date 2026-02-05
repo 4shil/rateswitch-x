@@ -606,3 +606,7 @@ body {
     align-items: flex-start;
   }
 }
+/* Step4: widget card standardization */
+.widget-card { border-radius:8px; padding:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.widget-badge { font-size:12px; padding:4px 6px; border-radius:6px; }
+/* end step4 */
