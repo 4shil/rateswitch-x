@@ -619,3 +619,6 @@ body {
 .ch-swap{padding:8px;border-radius:6px;border:2px solid #111;background:#fff}
 .ch-convert{background:#111;color:#fff;padding:10px 14px;border-radius:8px;border:none}
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+/* Step2 favorites styles */
+.favorites-bar{display:flex;gap:8px;padding:8px 12px;overflow:auto;white-space:nowrap}
+.fav-pill{padding:6px 10px;border-radius:999px;border:1px solid #111;background:#fff}
