@@ -628,3 +628,6 @@ body {
 .chart-readout{font-size:13px;color:#222;margin-top:6px}
 /* Step4 widget badge tweak */
 .widget-badge{display:inline-block;background:#fffbeb;color:#a65900;padding:4px 8px;margin-bottom:8px;border-radius:6px;font-weight:600}
+/* Step5 accessibility: focus, reduced motion fallback, larger hit targets */
+button, input, select{min-height:40px}
+@media (prefers-contrast: high){ body{background:#fff;color:#000} }
