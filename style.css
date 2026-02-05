@@ -611,3 +611,11 @@ body {
 .widget-badge { font-size:12px; padding:4px 6px; border-radius:6px; }
 /* end step4 */
 :focus{ outline:3px solid #ffbf47; outline-offset:2px }
+/* Step1 styles: compact header */
+.compact-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:2px solid #111;margin-bottom:12px}
+.ch-left{display:flex;gap:8px;align-items:center}
+.ch-amount{width:110px;padding:8px;border:2px solid #111;border-radius:6px}
+.ch-select{padding:8px;border:2px solid #111;border-radius:6px}
+.ch-swap{padding:8px;border-radius:6px;border:2px solid #111;background:#fff}
+.ch-convert{background:#111;color:#fff;padding:10px 14px;border-radius:8px;border:none}
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
