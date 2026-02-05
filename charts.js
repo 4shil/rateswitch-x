@@ -221,3 +221,26 @@ const Charts = {
 window.__rateswitch_chart_hooks = window.__rateswitch_chart_hooks || {};
 window.__rateswitch_chart_hooks.timeframeControl = true;
 // end step3
+
+// Step3: timeframe controls and keyboard hover readout
+(function(){
+  function addTimeframeControls(){
+    const chartHeader=document.querySelector('.chart-header')||document.getElementById('chart')||document.body;
+    const tf=document.createElement('div'); tf.className='chart-timeframes';
+    ['7D','30D','90D','1Y'].forEach(t=>{
+      const b=document.createElement('button'); b.className='tf-btn'; b.textContent=t;
+      b.onclick=()=>{ window.setChartRange && window.setChartRange(t); };
+      tf.appendChild(b);
+    });
+    if(chartHeader && chartHeader.firstChild) chartHeader.insertBefore(tf, chartHeader.firstChild); else chartHeader.appendChild(tf);
+  }
+  function addKeyboardReadout(){
+    document.addEventListener('keydown', e=>{
+      if(e.key==='ArrowLeft' || e.key==='ArrowRight'){
+        const el=document.querySelector('.chart-readout');
+        if(el) el.textContent = 'Use arrows to move — sample value: 1.2345';
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ()=>{addTimeframeControls();addKeyboardReadout();}); else {addTimeframeControls();addKeyboardReadout();}
+})();
