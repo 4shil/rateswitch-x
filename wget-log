@@ -1,0 +1,38 @@
+1146880K ........ ........ ........ ........ 21% 9.29M 10m44s
+1179648K ........ ........ ........ ........ 22% 9.13M 10m35s
+1212416K ........ ........ ........ ........ 22% 7.71M 10m27s
+1245184K ........ ........ ........ ........ 23% 9.31M 10m18s
+1277952K ........ ........ ........ ........ 23% 11.3M 10m7s
+1310720K ........ ........ ........ ........ 24% 10.1M 9m57s
+1343488K ........ ........ ........ ........ 25% 10.8M 9m47s
+1376256K ........ ........ ........ ........ 25% 9.01M 9m39s
+1409024K ........ ........ ........ ........ 26% 7.51M 9m34s
+1441792K ........ ........ ........ ........ 26% 6.55M 9m30s
+1474560K ........ ........ ........ ........ 27% 8.19M 9m23s
+1507328K ........ ........ ........ ........ 28% 10.0M 9m15s
+1540096K ........ ........ ........ ........ 28% 8.08M 9m9s
+1572864K ........ ........ ........ ........ 29% 4.95M 9m9s
+1605632K ........ ........ ........ ........ 29% 8.48M 9m2s
+1638400K ........ ........ ........ ........ 30% 9.69M 8m54s
+1671168K ........ ........ ........ ........ 31% 10.5M 8m46s
+1703936K ........ ........ ........ ........ 31% 11.7M 8m38s
+1736704K ........ ........ ........ ........ 32% 15.2M 8m28s
+1769472K ........ ........ ........ ........ 32% 10.4M 8m21s
+1802240K ........ ........ ........ ........ 33% 9.34M 8m15s
+1835008K ........ ........ ........ ........ 33% 7.42M 8m10s
+1867776K ........ ........ ........ ........ 34% 11.6M 8m2s
+1900544K .....                               34% 18.6M=4m15s
+
+2026-03-06 09:00:01 (7.29 MB/s) - Read error at byte 1951781592/5627044224 (Connection timed out). Retrying.
+
+--2026-03-06 09:00:02--  (try: 2)  https://cas-bridge.xethub.hf.co/xet-bridge-us/69a77bbf40a682fb162ab03e/9e72fd13546a42f8982febe993f1ebc52425a1eb7830fe2e4097f1086d06d41e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260306T031045Z&X-Amz-Expires=3600&X-Amz-Signature=861dc441cbe0b03cbe2a71128fed4ffd4f1fc388e5b48ebc5bb8fa9fb6ada21a&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf%3B+filename%3D%22Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1772770245&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3Mjc3MDI0NX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82OWE3N2JiZjQwYTY4MmZiMTYyYWIwM2UvOWU3MmZkMTM1NDZhNDJmODk4MmZlYmU5OTNmMWViYzUyNDI1YTFlYjc4MzBmZTJlNDA5N2YxMDg2ZDA2ZDQxZSoifV19&Signature=p9L8f-VpOOnWa6qFkp9yjH4LDWZnwVpn-vEEaAqt8CQzR4xLPuyZLlCk6DahkpOhnd5h23cK0Xp0FPqaRCS6LA4xwSxJHUP0pbti4ebzOjF7RJFRCsZKtWISd%7EAzaz7Y5Imop14PhFCk3Hz41X3kmTG2uMGzx96Kzc2nJXZvRq8QpSbzpqbsBlIgc5aX%7ET8Mqh9oOakQrpT803E7p6wBfapohzV7ASs99Ye50idcnYNHArPcZGGPsUt1K4P9R14CEo1Ng%7E8McM-y9sS6uvavOr5eBnjlXz1nbra%7EuY05AAmXIakOrlgRlAsG1aTYEv%7EoUSoRDEttszAgQUUEQ0FqZw__&Key-Pair-Id=K2L8F4GPSG1IFC
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|64:ff9b::6c9e:fb56|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|64:ff9b::6c9e:fb1a|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|64:ff9b::6c9e:fb24|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|64:ff9b::6c9e:fb11|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|108.158.251.86|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|108.158.251.26|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|108.158.251.36|:443... failed: Network is unreachable.
+Connecting to cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)|108.158.251.17|:443... failed: Network is unreachable.
+Resolving cas-bridge.xethub.hf.co (cas-bridge.xethub.hf.co)... failed: Temporary failure in name resolution.
+wget: unable to resolve host address ‘cas-bridge.xethub.hf.co’

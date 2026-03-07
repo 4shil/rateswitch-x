@@ -1,0 +1,11 @@
+{
+  "name": "telegram-discord-bridge",
+  "version": "1.0.0",
+  "description": "A bridge bot between Telegram and Discord",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "node-telegram-bot-api": "^0.65.0"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "skills": {
+    "self-improving-agent": {
+      "version": "1.0.11",
+      "installedAt": 1772129391979
+    },
+    "humanize-ai-text": {
+      "version": "1.0.1",
+      "installedAt": 1772129807727
+    },
+    "ui-ux-design": {
+      "version": "1.0.0",
+      "installedAt": 1772207650984
+    },
+    "ui-audit": {
+      "version": "1.0.1",
+      "installedAt": 1772207671430
+    },
+    "frontend-design-extractor": {
+      "version": "1.0.1",
+      "installedAt": 1772208153093
+    },
+    "backend": {
+      "version": "1.0.0",
+      "installedAt": 1772208157364
+    },
+    "fullstack-developer": {
+      "version": "1.0.0",
+      "installedAt": 1772208162051
+    },
+    "expo-native-ui": {
+      "version": "1.0.0",
+      "installedAt": 1772209276189
+    },
+    "react": {
+      "version": "1.0.4",
+      "installedAt": 1772210058339
+    },
+    "vercel-react-native-skills": {
+      "version": "1.0.0",
+      "installedAt": 1772210072798
+    },
+    "native-ui": {
+      "version": "1.0.0",
+      "installedAt": 1772210248281
+    },
+    "react-expert": {
+      "version": "0.1.0",
+      "installedAt": 1772210394792
+    },
+    "react-best-practices": {
+      "version": "1.0.0",
+      "installedAt": 1772210476551
+    },
+    "firebase-auth-setup": {
+      "version": "0.1.1",
+      "installedAt": 1772210541451
+    },
+    "shadcn-ui": {
+      "version": "1.0.0",
+      "installedAt": 1772210608575
+    },
+    "remotion": {
+      "version": "1.0.1",
+      "installedAt": 1772210637033
+    },
+    "remotion-video-toolkit": {
+      "version": "1.4.0",
+      "installedAt": 1772210659239
+    },
+    "realtime-react-hooks": {
+      "version": "1.0.0",
+      "installedAt": 1772210691833
+    },
+    "copilotkit-react": {
+      "version": "1.0.1",
+      "installedAt": 1772210714322
+    },
+    "self-improving": {
+      "version": "1.1.3",
+      "installedAt": 1772210803804
+    }
+  }
+}
