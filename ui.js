@@ -111,7 +111,11 @@ const UI = {
         <div class="graph-panel">
           <div class="panel-header">
             <h2 class="panel-title">EXCHANGE RATE HISTORY</h2>
-            <div class="timeframe-selector">
+            <div class="timeframe-tabs">
+              <button data-days="7">7 Days</button>
+              <button data-days="30">1 Month</button>
+              <button data-days="90">3 Months</button>
+              <button data-days="365">1 Year</button>
               <button class="timeframe-btn active" data-days="7">7D</button>
               <button class="timeframe-btn" data-days="30">30D</button>
               <button class="timeframe-btn" data-days="90">90D</button>
@@ -181,7 +185,7 @@ const UI = {
     multiBase?.addEventListener('change', () => this.updateMultiCurrency());
     
     // Timeframe buttons
-    document.querySelectorAll('.timeframe-btn').forEach(btn => {
+    document.querySelectorAll('.timeframe-tabs button').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.timeframe-btn').forEach(b => b.classList.remove('active'));
         e.target.classList.add('active');
