@@ -1,107 +1,85 @@
-// RateSwitch X - Main Application
-console.log('RateSwitch X initializing...');
-
-// App state
+// RateSwitch X — App Entry
 const App = {
-  version: '1.0.0',
+  version: '2.0.0',
   online: navigator.onLine,
-  
+
   init() {
-    console.log('App v' + this.version + ' started');
-    this.updateStatus();
     this.registerServiceWorker();
+    this.updateStatus();
+    this.setupNetworkListeners();
     this.setupKeyboardShortcuts();
-    
-    // Initialize UI
     UI.init();
-    const offlineBanner = document.getElementById('offline-banner');
-    if (!navigator.onLine) {
-      offlineBanner.classList.remove('hidden');
-    } else {
-      offlineBanner.classList.add('hidden');
-    }
-    UI.showLoading();
-    UI.updateConversion();
-    setTimeout(() => UI.hideLoading(), 800);
-    
-    // Network status listeners
+  },
+
+  setupNetworkListeners() {
     window.addEventListener('online', () => {
       this.online = true;
       this.updateStatus();
       UI.updateConversion();
+      UI.updateGraph();
+      UI.showToast('Back online! Rates refreshed.', 'success');
     });
-    
-    App.retryConnection = function() {
-  if (navigator.onLine) {
-    document.getElementById('offline-banner').classList.add('hidden');
-    this.updateStatus();
-  }
-};
-
-window.addEventListener('offline', () => {
+    window.addEventListener('offline', () => {
       this.online = false;
       this.updateStatus();
+      UI.showToast('You\'re offline — showing cached rates', 'info');
     });
   },
-  
+
+  tryReconnect() {
+    if (navigator.onLine) {
+      this.online = true;
+      this.updateStatus();
+      UI.updateConversion();
+      UI.updateGraph();
+      UI.showToast('Reconnected!', 'success');
+    } else {
+      UI.showToast('Still offline...', 'error');
+    }
+  },
+
+  updateStatus() {
+    const badge  = document.getElementById('status');
+    const text   = document.getElementById('status-text');
+    const banner = document.getElementById('offline-banner');
+
+    if (badge) {
+      badge.className = `status-badge ${this.online ? 'online' : 'offline'}`;
+    }
+    if (text) text.textContent = this.online ? 'Online' : 'Offline';
+    if (banner) banner.classList.toggle('visible', !this.online);
+  },
+
   setupKeyboardShortcuts() {
     document.addEventListener('keydown', (e) => {
-      // Ignore if typing in input
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-      
-      // S - Swap currencies
-      if (e.key === 's' || e.key === 'S') {
-        e.preventDefault();
-        UI.swapCurrencies();
-      }
-      
-      // F - Toggle favorites
-      if (e.key === 'f' || e.key === 'F') {
-        e.preventDefault();
-        UI.toggleFavorite();
-      }
-      
-      // M - Toggle multi-currency
-      if (e.key === 'm' || e.key === 'M') {
-        e.preventDefault();
-        UI.toggleMultiMode();
-      }
-      
-      // 1-4 - Timeframe shortcuts
-      if (e.key >= '1' && e.key <= '4') {
+
+      if (e.key === 's' || e.key === 'S') { e.preventDefault(); UI.swapCurrencies(); }
+      if (e.key === 'f' || e.key === 'F') { e.preventDefault(); UI.toggleFavorite(); }
+      if (e.key === 'm' || e.key === 'M') { e.preventDefault(); UI.toggleMulti(); }
+      if (e.key === '?') { e.preventDefault(); UI.openShortcuts(); }
+      if (e.key === 'Escape') { UI.closeShortcuts(); }
+
+      if (['1','2','3','4'].includes(e.key)) {
         e.preventDefault();
         const days = [7, 30, 90, 365][parseInt(e.key) - 1];
-        document.querySelectorAll('.timeframe-btn').forEach(btn => {
-          btn.classList.remove('active');
-          if (parseInt(btn.dataset.days) === days) {
-            btn.classList.add('active');
-            UI.currentTimeframe = days;
-            UI.updateGraph();
-            UI.updateWidgets();
-          }
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          const active = parseInt(btn.dataset.days) === days;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', String(active));
+          if (active) { UI.currentTimeframe = days; UI.updateGraph(); }
         });
       }
     });
   },
-  
-  updateStatus() {
-    const statusEl = document.getElementById('status');
-    if (statusEl) {
-      statusEl.textContent = this.online ? 'ONLINE' : 'OFFLINE';
-      statusEl.style.background = this.online ? '#22C55E' : '#EAB308';
-    }
-  },
-  
+
   registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => console.log('Service Worker registered'))
-        .catch(err => console.warn('Service Worker failed:', err));
+      navigator.serviceWorker.register('/service-worker.js').catch(() => {});
     }
-  }
+  },
 };
 
-// Initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => App.init());
 } else {
