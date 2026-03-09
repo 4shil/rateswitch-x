@@ -1,3 +1,21 @@
+/* Shortcuts Overlay */
+#shortcuts-overlay {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  padding: 1rem;
+  z-index: 300;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#shortcuts-overlay.visible {
+  display: block;
+}
+
 /*--- Hero Rate Styling ---*/
 .rate-display.hero-rate {
   position: sticky;

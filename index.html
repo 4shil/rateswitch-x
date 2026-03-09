@@ -33,7 +33,18 @@
       <h2>Main Dashboard</h2>
       <h3>Overview of Exchange Rates</h3>
       <div class="header-right">
-        <div class="shortcuts-hint" title="Keyboard shortcuts">⌨️</div>
+        <div class="shortcuts-hint" title="Keyboard shortcuts" onclick="UI.toggleShortcuts()">⌨️</div>
+        <div id="shortcuts-overlay" class="hidden">
+          <h2>Keyboard Shortcuts</h2>
+          <ul>
+            <li><strong>S</strong>: Swap currencies</li>
+            <li><strong>F</strong>: Toggle favorites</li>
+            <li><strong>M</strong>: Multi-currency mode</li>
+            <li><strong>1-4</strong>: Change timeframe</li>
+            <li><strong>?</strong>: Show/hide this overlay</li>
+          </ul>
+          <button onclick="UI.toggleShortcuts()">Close</button>
+        </div>
         <div class="status" id="status">ONLINE</div>
       </div>
     </header>

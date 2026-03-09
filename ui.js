@@ -137,6 +137,11 @@ const UI = {
     ).join('');
   },
   
+  toggleShortcuts() {
+    const overlay = document.getElementById('shortcuts-overlay');
+    overlay.classList.toggle('visible');
+  }
+
   attachEventListeners() {
     const amountInput = document.getElementById('amount-input');
     const fromSelect = document.getElementById('from-currency');
