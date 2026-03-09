@@ -154,7 +154,10 @@ const UI = {
       this.updateFavoriteButton();
     });
     swapBtn?.addEventListener('click', () => this.swapCurrencies());
-    favBtn?.addEventListener('click', () => this.toggleFavorite());
+    favBtn?.addEventListener('click', () => {
+  this.toggleFavorite();
+  this.showToast('Favorite added');
+});
     
     // Multi-currency toggle
     const multiToggle = document.getElementById('multi-toggle');
@@ -455,6 +458,18 @@ const UI = {
     }
   },
   
+  showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = 0;
+      setTimeout(() => toast.remove(), 500);
+    }, 3000);
+  }
+
   showError(message) {
     console.error(message);
   }

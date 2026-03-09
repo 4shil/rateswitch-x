@@ -8,6 +8,21 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.toast-notification {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.5s;
+  z-index: 200;
+}
+
 /*--- Established Clear Typography Hierarchy ---*/
 h1, h2, h3 {
   font-family: var(--font-sans);
