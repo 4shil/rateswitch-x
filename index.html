@@ -45,7 +45,11 @@
           </ul>
           <button onclick="UI.toggleShortcuts()">Close</button>
         </div>
-        <div class="status" id="status" role="status" aria-live="polite">ONLINE</div>
+        <div id="offline-banner" class="hidden">
+        <p>Offline Mode: Some features may be unavailable.</p>
+        <button onclick="App.retryConnection()">Retry</button>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite">ONLINE</div>
       </div>
     </header>
     

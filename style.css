@@ -101,6 +101,25 @@
   text-decoration: underline;
 }
 
+/* Offline Banner */
+#offline-banner {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #ffeb3b;
+  text-align: center;
+  padding: 1rem;
+  z-index: 200;
+  border-bottom: 1px solid #ccc;
+}
+#offline-banner p {
+  margin: 0;
+}
+#offline-banner.hidden {
+  display: none;
+}
+
 /*--- Error Banner Styling ---*/
 #error-banner {
   display: none;

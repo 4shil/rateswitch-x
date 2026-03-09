@@ -14,6 +14,12 @@ const App = {
     
     // Initialize UI
     UI.init();
+    const offlineBanner = document.getElementById('offline-banner');
+    if (!navigator.onLine) {
+      offlineBanner.classList.remove('hidden');
+    } else {
+      offlineBanner.classList.add('hidden');
+    }
     UI.showLoading();
     UI.updateConversion();
     setTimeout(() => UI.hideLoading(), 800);
@@ -25,7 +31,14 @@ const App = {
       UI.updateConversion();
     });
     
-    window.addEventListener('offline', () => {
+    App.retryConnection = function() {
+  if (navigator.onLine) {
+    document.getElementById('offline-banner').classList.add('hidden');
+    this.updateStatus();
+  }
+};
+
+window.addEventListener('offline', () => {
       this.online = false;
       this.updateStatus();
     });
