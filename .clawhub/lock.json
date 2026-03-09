@@ -80,6 +80,10 @@
     "self-improving": {
       "version": "1.1.3",
       "installedAt": 1772210803804
+    },
+    "mcporter": {
+      "version": "1.0.0",
+      "installedAt": 1773031752995
     }
   }
 }

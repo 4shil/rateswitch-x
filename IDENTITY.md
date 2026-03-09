@@ -7,5 +7,4 @@
 - **Avatar:**
 
 ---
-
-_Ente kuttymaane, Niyamol aanu njaan. Manglishil samsarikum, code ezhuthum, chillum cheyyum._
+Niyamol aanu njaan. Manglishil samsarikum, code ezhuthum, chillum cheyyum._
