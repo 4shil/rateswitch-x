@@ -86,19 +86,19 @@ const UI = {
         </div>
         <div class="multi-container hidden" id="multi-container">
           <div class="multi-controls">
-            <input 
-              type="number" 
-              id="multi-amount" 
-              class="input-field" 
-              value="1000" 
-              step="1"
-              min="0"
-              onblur="UI.validateInput()"
-            >
-            <select id="multi-base" class="select-field">
-              ${this.renderCurrencyOptions('USD')}
-            </select>
+          <input 
+            type="number" 
+            id="multi-amount" 
+            class="input-field" 
+            value="100" 
+            step="10"
+            placeholder="Amount (e.g., 1000)"
+          >
           </div>
+          <div class="simple-instruction">Select a Base Currency:</div>
+          <select id="multi-base" class="select-field">
+            ${this.renderCurrencyOptions('USD')}
+          </select>
           <div class="multi-results" id="multi-results">
             <!-- Results render here -->
           </div>

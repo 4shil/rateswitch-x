@@ -72,6 +72,14 @@ h3 {
   font-size: 1.5rem;
 }
 
+/* Simple Instruction Styling */
+.simple-instruction {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
 /* Adjust default margin for better spacing */
 body, h1, h2, h3, p {
   margin: 0;
