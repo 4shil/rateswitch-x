@@ -23,6 +23,19 @@
   z-index: 200;
 }
 
+/* Loading Spinner */
+#loading-spinner {
+  display: none;
+  margin: auto;
+  color: #555;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+#loading-spinner.visible {
+  display: block;
+}
+
 /*--- Error Banner Styling ---*/
 #error-banner {
   display: none;

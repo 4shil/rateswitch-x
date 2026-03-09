@@ -117,6 +117,7 @@ const UI = {
             </div>
           </div>
           <div class="graph-container" id="graph-container">
+            <div id="loading-spinner" class="hidden">Loading...</div>
             <div class="graph-loading">Loading chart data...</div>
           </div>
         </div>
@@ -245,7 +246,15 @@ const UI = {
     }
   },
   
-  async updateGraph() {
+  async showLoading() {
+    document.getElementById('loading-spinner').classList.add('visible');
+  }
+
+  hideLoading() {
+    document.getElementById('loading-spinner').classList.remove('visible');
+  }
+
+  updateGraph() {
     const container = document.getElementById('graph-container');
     if (!container) return;
     

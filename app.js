@@ -14,7 +14,9 @@ const App = {
     
     // Initialize UI
     UI.init();
+    UI.showLoading();
     UI.updateConversion();
+    setTimeout(() => UI.hideLoading(), 800);
     
     // Network status listeners
     window.addEventListener('online', () => {
