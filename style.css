@@ -91,7 +91,10 @@ button#favorite-btn {
   font-weight: bold;
 }
 
-button#swap-btn {
+button#swap-btn, button#favorite-btn {
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
   background-color: #3caea3;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: none;
