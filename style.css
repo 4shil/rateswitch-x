@@ -63,6 +63,18 @@
   display: block;
 }
 
+/* Sticky Footer */
+.sticky-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f1f1f1;
+  box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
 /* Timeframe Tabs */
 .timeframe-tabs button {
   padding: 10px;
