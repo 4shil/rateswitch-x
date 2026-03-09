@@ -70,7 +70,8 @@
 
 /* Focus Indicator */
 :focus {
-  outline: 2px solid #3caee3;
+  outline: 3px solid #ff6b6b;
+  border-radius: 3px;
   outline-offset: 4px;
 }
 
