@@ -3,86 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-  <meta name="description" content="Privacy-first currency exchange dashboard - no tracking, no ads, works offline">
-  <meta name="keywords" content="currency, exchange, converter, forex, rates, privacy, offline">
-  <meta name="author" content="RateSwitch X">
-  <meta name="theme-color" content="#000000">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="RateSwitch X - Currency Intelligence Platform">
-  <meta property="og:description" content="Fast, private currency exchange dashboard with zero surveillance">
-  <meta property="og:type" content="website">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RateSwitch X">
-  <meta name="twitter:description" content="Privacy-first currency dashboard">
-  
-  <title>RateSwitch X - Currency Intelligence Platform</title>
-  
+  <meta name="description" content="Privacy-first currency exchange dashboard — no tracking, no ads, works offline">
+  <meta name="theme-color" content="#080810">
+  <title>RateSwitch X</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  
-  <!-- Preconnect to API -->
   <link rel="preconnect" href="https://api.frankfurter.app">
 </head>
 <body>
   <div id="app">
+
+    <!-- Header -->
     <header class="header" role="banner">
-      <h1 class="logo">RATESWITCH X</h1>
-      <h2>Main Dashboard</h2>
-      <h3>Overview of Exchange Rates</h3>
-      <div class="header-right">
-        <div class="shortcuts-hint" title="Keyboard shortcuts" onclick="UI.toggleShortcuts()">⌨️</div>
-        <div id="shortcuts-overlay" class="hidden">
-          <h2>Keyboard Shortcuts</h2>
-          <ul>
-            <li><strong>S</strong>: Swap currencies</li>
-            <li><strong>F</strong>: Toggle favorites</li>
-            <li><strong>M</strong>: Multi-currency mode</li>
-            <li><strong>1-4</strong>: Change timeframe</li>
-            <li><strong>?</strong>: Show/hide this overlay</li>
-          </ul>
-          <button onclick="UI.toggleShortcuts()">Close</button>
+      <div class="logo">RateSwitch X</div>
+      <div class="header-right" style="display:flex;align-items:center;gap:10px">
+        <button class="modal-close" id="shortcuts-hint-btn" title="Keyboard shortcuts (press ?)"
+          style="width:32px;height:32px;font-size:13px;font-weight:700"
+          aria-label="Show keyboard shortcuts">?</button>
+        <div class="status-badge online" id="status" role="status" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="status-text">Online</span>
         </div>
-        <div id="offline-banner" class="hidden">
-        <p>Offline Mode: Some features may be unavailable.</p>
-        <button onclick="App.retryConnection()">Retry</button>
-      </div>
-      <div class="status" id="status" role="status" aria-live="polite">ONLINE</div>
       </div>
     </header>
-    
-    <nav class="breadcrumb" aria-label="breadcrumb">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Dashboard</li>
-    </ol>
-  </nav>
 
-  <main class="container">
-      <div id="main-content">
-        <!-- App loads here -->
-      </div>
-    </main>
-    
-    <footer class="footer sticky-footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <strong>RATESWITCH X</strong> — Privacy-first currency intelligence
-        </div>
-        <div class="footer-section">
-          No tracking • No ads • Open source
-        </div>
-      </div>
+    <!-- Offline Banner -->
+    <div class="offline-banner" id="offline-banner" role="alert" aria-live="assertive">
+      <span>⚠ You're offline — showing cached rates</span>
+      <button id="reconnect-btn" onclick="App.tryReconnect()">Reconnect</button>
+    </div>
+
+    <!-- Main content -->
+    <main class="container" id="main-content" role="main"></main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>RateSwitch X — privacy-first currency intelligence</span>
+      <span>Rates via <a href="https://www.frankfurter.app" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">Frankfurter API</a></span>
     </footer>
+
+    <!-- Mobile bottom nav -->
+    <nav class="mobile-nav" role="navigation" aria-label="Main navigation">
+      <button class="mobile-nav-btn active" id="nav-convert" onclick="UI.showSection('convert')" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        Convert
+      </button>
+      <button class="mobile-nav-btn" id="nav-chart" onclick="UI.showSection('chart')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Chart
+      </button>
+      <button class="mobile-nav-btn" id="nav-favorites" onclick="UI.showSection('favorites')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Favorites
+      </button>
+    </nav>
+
   </div>
+
+  <!-- Shortcuts overlay -->
+  <div class="overlay" id="shortcuts-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Keyboard Shortcuts</h2>
+        <button class="modal-close" onclick="UI.closeShortcuts()" aria-label="Close shortcuts">✕</button>
+      </div>
+      <div class="shortcut-list">
+        <div class="shortcut-item"><span class="shortcut-desc">Swap currencies</span><kbd class="kbd">S</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Toggle favorite</span><kbd class="kbd">F</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Toggle multi-currency</span><kbd class="kbd">M</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Timeframe: 7 days</span><kbd class="kbd">1</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Timeframe: 30 days</span><kbd class="kbd">2</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Timeframe: 90 days</span><kbd class="kbd">3</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Timeframe: 1 year</span><kbd class="kbd">4</kbd></div>
+        <div class="shortcut-item"><span class="shortcut-desc">Show shortcuts</span><kbd class="kbd">?</kbd></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
   <script src="storage.js"></script>
   <script src="cache.js"></script>
-  <script src="favorites.js"></script>
   <script src="exchange.js"></script>
   <script src="charts.js"></script>
+  <script src="favorites.js"></script>
   <script src="ui.js"></script>
   <script src="app.js"></script>
 </body>
