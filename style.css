@@ -136,6 +136,22 @@ h3 {
   font-size: 1.5rem;
 }
 
+/* Drawer Styling */
+.drawer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: 40%;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.3s ease-in-out;
+}
+.drawer.hidden {
+  transform: translateY(100%);
+}
+
 /* Simple Instruction Styling */
 .simple-instruction {
   font-size: 0.9rem;

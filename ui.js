@@ -73,6 +73,8 @@ const UI = {
       
       <!-- Favorites Panel -->
       <div class="favorites-panel" id="favorites-panel">
+        <button class="drawer-toggle" onclick="UI.toggleFavoritesDrawer()">Show Favorites</button>
+        <div id="favorites-drawer" class="drawer hidden">
         <!-- Rendered by updateFavorites() -->
       </div>
       
@@ -418,7 +420,12 @@ const UI = {
     btn.textContent = isFavorite ? '★' : '☆';
   },
   
-  async updateFavorites() {
+  async toggleFavoritesDrawer() {
+    const drawer = document.getElementById('favorites-drawer');
+    drawer.classList.toggle('hidden');
+  }
+
+  updateFavorites() {
     const container = document.getElementById('favorites-panel');
     if (!container) return;
     
