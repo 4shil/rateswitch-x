@@ -39,6 +39,24 @@ body, h1, h2, h3, p {
   padding: 0;
 }
 
+/* Enhance text contrast for accessibility */
+body {
+  color: #212121;
+  background-color: #f9f9f9;
+}
+
+.label-text, .panel-title, .rate-text {
+  color: #333333;
+}
+
+.input-field, .output-field {
+  border: 1px solid #b0b0b0;
+}
+
+.input-label {
+  color: #555555;
+}
+
 /* Optimized spacing and element grouping for better visual flow */
 .converter-panel {
   padding: 1.5rem;
