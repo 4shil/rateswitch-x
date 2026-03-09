@@ -7,6 +7,7 @@ const UI = {
   historicalData: null,
   
   init() {
+    this.errorBanner = document.getElementById('error-banner');
     this.render();
     this.attachEventListeners();
   },
@@ -37,6 +38,7 @@ const UI = {
             </div>
           </div>
           
+          <div id="error-banner" class="hidden">Invalid input or failed API call</div>
           <button class="swap-button" id="swap-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
               <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -91,6 +93,7 @@ const UI = {
               value="1000" 
               step="1"
               min="0"
+              onblur="UI.validateInput()"
             >
             <select id="multi-base" class="select-field">
               ${this.renderCurrencyOptions('USD')}
@@ -184,7 +187,30 @@ const UI = {
     this.updateFavorites();
   },
   
-  async updateConversion() {
+  async showError(message) {
+    this.errorBanner.textContent = message;
+    this.errorBanner.classList.add('visible');
+  }
+
+  hideError() {
+    this.errorBanner.classList.remove('visible');
+  }
+
+  validateInput() {
+    const inputFields = document.querySelectorAll('.input-field');
+    inputFields.forEach((field) => {
+      const value = field.value.trim();
+      if (!value || isNaN(value) || value <= 0) {
+        this.showError('Invalid input detected');
+        field.classList.add('input-error');
+      } else {
+        this.hideError();
+        field.classList.remove('input-error');
+      }
+    });
+  }
+
+  updateConversion() {
     const amount = parseFloat(document.getElementById('amount-input').value) || 0;
     const from = document.getElementById('from-currency').value;
     const to = document.getElementById('to-currency').value;

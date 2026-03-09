@@ -23,6 +23,20 @@
   z-index: 200;
 }
 
+/*--- Error Banner Styling ---*/
+#error-banner {
+  display: none;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+#error-banner.visible {
+  display: block;
+}
+
 /*--- Established Clear Typography Hierarchy ---*/
 h1, h2, h3 {
   font-family: var(--font-sans);
