@@ -63,6 +63,20 @@
   display: block;
 }
 
+/* Breadcrumb Styling */
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 1rem 0;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 /*--- Error Banner Styling ---*/
 #error-banner {
   display: none;
