@@ -1,3 +1,13 @@
+/*--- Hero Rate Styling ---*/
+.rate-display.hero-rate {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border: solid 1px #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 /*--- Established Clear Typography Hierarchy ---*/
 h1, h2, h3 {
   font-family: var(--font-sans);

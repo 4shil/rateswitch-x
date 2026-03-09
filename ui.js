@@ -61,7 +61,7 @@ const UI = {
           </div>
         </div>
         
-        <div class="rate-display" id="rate-display">
+        <div class="rate-display hero-rate" id="rate-display">
           <span class="rate-text">Loading rates...</span>
           <button class="favorite-btn" id="favorite-btn" title="Add to favorites">
             ★
