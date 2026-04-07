@@ -10,7 +10,17 @@
     "type": "git",
     "url": "https://github.com/4shil/rateswitch-x"
   },
-  "keywords": ["currency", "exchange", "forex", "privacy", "offline", "pwa"],
+  "keywords": [
+    "currency",
+    "exchange",
+    "forex",
+    "privacy",
+    "offline",
+    "pwa"
+  ],
   "author": "4shil",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^10.0.3"
+  }
 }

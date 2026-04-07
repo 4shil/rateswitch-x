@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-07T10:37:59.263Z",
+  "entries": {
+    "memory:memory/2026-02-28.md:116:128": {
+      "key": "memory:memory/2026-02-28.md:116:128",
+      "path": "memory/2026-02-28.md",
+      "startLine": 116,
+      "endLine": 128,
+      "source": "memory",
+      "snippet": "- Gallery redundant `handleNext = goNext` alias removed ### Key Files - Atlas location: ~/Coding/Atlas/ - Roadmap: ~/Coding/Atlas/ATLAS_ROADMAP.md - Supabase URL: https://cjkdgktttnawsmbptszy.supabase.co (in .env, not committed) - GitHub: github.com/4shil/Atlas (main branch) - App bundle ID: com.atlas.bucketlist ### Commit Style Preference - No prefix (no \"feat:\", \"fix:\", \"docs:\" — just plain descriptive message) - Commit only when feature/fix is complete and coherent — never mid-feature",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 1.004465329647064,
+      "maxScore": 0.5026659190654754,
+      "firstRecalledAt": "2026-04-07T10:37:31.060Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "35bfbde1e947",
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "coding/atlas",
+        "coding/atlas/atlas-roadmap.md",
+        "cjkdgktttnawsmbptszy.supabase.co",
+        "github.com/4shil/atlas",
+        "com.atlas.bucketlist",
+        "feature/fix",
+        "mid-feature",
+        "gallery"
+      ]
+    },
+    "memory:memory/2026-03-12.md:1:7": {
+      "key": "memory:memory/2026-03-12.md:1:7",
+      "path": "memory/2026-03-12.md",
+      "startLine": 1,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "## 2026-03-12 22:21 (Asia/Calcutta) - Completed an 18-step upgrade for the Atlas app (React Native/Expo/Supabase). All steps were committed and pushed to GitHub (4shil/Atlas). - Conducted a disk usage audit of the root directory (excluding /home). Identified ~10GB of usage from Ollama (runtime + models) and ~2.6GB from Flatpak runtimes. - Performed a full removal of Ollama (binary, runtime libs, and models) to free up space. - Updated the README.md for the 'Axium-TempFiles' repository (4shil/Axium-TempFiles) with a new image URL (https://ibb.co/nMyvTQ6Y) and pushed the changes to the master branch.",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.9711738049983978,
+      "maxScore": 0.48592748939990993,
+      "firstRecalledAt": "2026-04-07T10:37:31.060Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "35bfbde1e947",
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "asia/calcutta",
+        "18-step",
+        "native/expo/supabase",
+        "4shil/atlas",
+        "2.6gb",
+        "readme.md",
+        "axium-tempfiles",
+        "4shil/axium-tempfiles"
+      ]
+    },
+    "memory:memory/2026-03-03.md:23:35": {
+      "key": "memory:memory/2026-03-03.md:23:35",
+      "path": "memory/2026-03-03.md",
+      "startLine": 23,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "- Compiled 24 improvements covering: bugs, UX, missing features, performance, App Store readiness - Spawned sub-agent (session `agent:main:subagent:18d00f29-57e9-47b1-86c3-20fb19d3065e`, runId `55cf613b-dc9a-4991-90af-bcc47aad1888`) to implement all 24 - Each improvement = 1 commit, push after every commit to `github.com/4shil/Atlas` (branch `main`) - Sub-agent still running as of 11:15 PM IST — auto-announces on completion ### Key files - `src/app/index.tsx` — onboarding gate fix target - `src/app/(tabs)/map.tsx` — dead buttons + filter + clustering - `src/app/settings.tsx` — delete account, legal links - `src/store/useGoalStore.ts` — milestones, pagination, sync conflict fix - `supabase/s",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.9678964436054229,
+      "maxScore": 0.48435412645339965,
+      "firstRecalledAt": "2026-04-07T10:37:31.060Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "35bfbde1e947",
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "sub-agent",
+        "github.com/4shil/atlas",
+        "auto-announces",
+        "src/app/index.tsx",
+        "src/app",
+        "map.tsx",
+        "src/app/settings.tsx",
+        "src/store/usegoalstore.ts"
+      ]
+    },
+    "memory:memory/2026-03-11.md:13:35": {
+      "key": "memory:memory/2026-03-11.md:13:35",
+      "path": "memory/2026-03-11.md",
+      "startLine": 13,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "- Previously also did 20-step UI/UX audit upgrade (typography, contrast, accessibility, mobile nav, offline banner, etc.) - Stack: Vanilla HTML/CSS/JS — no framework, no build step - Design: dark glass aesthetic (#080810 bg, #6366f1 accent, glassmorphism cards) - Key files: style.css, ui.js, charts.js, app.js, index.html ## SWE-AF (~/Coding/SWE-AF) - Cloned and analysed: https://github.com/Agent-Field/SWE-AF - An autonomous software engineering factory built on AgentField - One API call → full engineering team (PM, architect, coder, QA, reviewer, merger, verifier) - 3 nested control loops: inner (retry), middle (advisor), outer (replanner) - Scored 95/100 on benchmark vs Claude Code Sonnet",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.963549381494522,
+      "maxScore": 0.4831082493066787,
+      "firstRecalledAt": "2026-04-07T10:37:31.060Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "35bfbde1e947",
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "20-step",
+        "ui/ux",
+        "html/css/js",
+        "style.css",
+        "ui.js",
+        "charts.js",
+        "app.js",
+        "index.html"
+      ]
+    },
+    "memory:memory/2026-03-11.md:30:51": {
+      "key": "memory:memory/2026-03-11.md:30:51",
+      "path": "memory/2026-03-11.md",
+      "startLine": 30,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "- **Recovery:** Spawned new sub-agent (`df8fbdd4`) with strict instructions to implement actual functional React Native code (Steps 2-26). - **Current State:** Re-implementing from Step 2 (Typography & AnimatedCounter). - **Sub-agent task:** atlas-redesign-functional-recovery-2-26. ## Ashil Preferences - Commit format: plain descriptive message — NO \"Step N:\" prefix, NO feat/fix/chore prefix - Minimum 50+ insertions per commit - Sub-agents keep stopping early; always spawn new ones to resume from exact step - Updates after EACH step individually - Work dir: ~/Coding/Atlas and ~/Coding/rateswitch-x ## Atlas 20-Step UI Plan (Awaiting Approval) — 2026-03-11 21:21 - Ashil asked to prepare and",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.9541629850864409,
+      "maxScore": 0.4780819118022918,
+      "firstRecalledAt": "2026-04-07T10:37:31.060Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "35bfbde1e947",
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "sub-agent",
+        "2-26",
+        "re-implementing",
+        "feat/fix/chore",
+        "sub-agents",
+        "coding/atlas",
+        "coding/rateswitch-x",
+        "20-step"
+      ]
+    },
+    "memory:memory/2026-03-03.md:1:25": {
+      "key": "memory:memory/2026-03-03.md:1:25",
+      "path": "memory/2026-03-03.md",
+      "startLine": 1,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "# Memory — 2026-03-03 (Tuesday) ## Atlas App Analysis & Improvements - **App**: Atlas — React Native / Expo travel goals app at `~/Coding/Atlas` - **Stack**: Expo 53, React Native 0.79, Expo Router, Zustand + AsyncStorage, Supabase (auth + DB + storage), NativeWind, Reanimated, Sentry - **Supabase**: fully wired — auth screens, goals table, storage, offline sync, RLS ### Known Issues Found - Onboarding gate broken — `index.tsx` hardcodes redirect to tabs, ignores `hasOnboarded` - Notification ID mismatch — `Date.now()` used instead of goal's UUID - \"Delete Account\" only clears local data — doesn't touch Supabase - 4 dead buttons on map screen (back, filter, recenter, \"see all\") - Dead hea",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.4735129445791244,
+      "maxScore": 0.4735129445791244,
+      "firstRecalledAt": "2026-04-07T10:37:59.263Z",
+      "lastRecalledAt": "2026-04-07T10:37:59.263Z",
+      "queryHashes": [
+        "8a9c38494fd4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "router",
+        "coding/atlas",
+        "0.79",
+        "index.tsx",
+        "date.now",
+        "tuesday",
+        "atlas",
+        "app"
+      ]
+    }
+  }
+}

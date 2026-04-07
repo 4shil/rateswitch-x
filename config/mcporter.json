@@ -2,6 +2,13 @@
   "mcpServers": {
     "linear": {
       "url": "https://mcp.linear.app/mcp"
+    },
+    "ytm-mcp": {
+      "command": "node /home/ashil/Coding/ytm-mcp/dist/index.js"
+    },
+    "openviking": {
+      "baseUrl": "http://127.0.0.1:2033/mcp"
     }
-  }
+  },
+  "imports": []
 }
